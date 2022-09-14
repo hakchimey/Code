@@ -1,0 +1,57 @@
+var coin = createSprite(200,10);
+coin.setAnimation("coin_gold_1");
+setCoin();
+
+var bunny = createSprite(200,350);
+bunny.setAnimation("bunny1_ready_1");
+
+var score = 0;
+
+function draw() {
+  
+  if(keyDown("left")){
+  
+ bunny.x = bunny.x - 5;
+  }
+  
+  if(keyDown("right")){
+  
+ bunny.x = bunny.x + 5;
+  }
+  
+  if(coin.y > 400){
+  
+ setCoin();
+  }
+  
+  if (bunny.isTouching(coin)) {
+  
+ setCoin();
+  
+ score = score + 10;
+  }
+  if (score < 200) {
+  
+ begBackground();
+  } else {
+  
+ win();
+  }
+  textSize(20);
+  text("Score: " + score, 10, 10, 100, 100);
+  drawSprites();
+}
+
+function setCoin(){
+coin.velocityY = randomNumber(5, 12);
+coin.y = -50;
+coin.x = randomNumber(25, 375);
+}
+function begBackground() {
+  background("white");
+}
+function win() {
+  background("bluesky");
+  textSize(30 );
+  text("you win", 175, 175);
+}
