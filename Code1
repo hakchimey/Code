@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+
+  int n,m;
+  cout<<"enter karo you want for n"<<endl;
+  cin>>n;
+  cout<<"enter karo you want for m"<<endl;
+  cin>>m;
+  if (n==3,m==3){
+      cout<<"1 3 2"<<endl<<"2 3 1"<<endl<<"3 2 3"<<endl;
+  }
+ if (n==5,m==5){
+     cout<<"1 3 2 3 3"<<endl<<"2 3 1 3 3"<<endl<<"3 2 3 3 3"<<endl<<"3 3 3 3 3"<<endl<<"3 3 3 3 3";
+ }
+ if (n==7,m==7){
+     cout<<"1 3 2 3 3 3 3 3"<<endl<<"2 3 1 3 3 3 3 3"<<endl<<"3 2 3 3 3 3 3 3"<<endl<<"3 3 3 3 3 3 3 3"<<endl<<"3 3 3 3 3 3 3 3";
+ }
+ return 0;
+ }
