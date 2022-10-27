@@ -1,0 +1,36 @@
+* Student answers may vary. Create four copies of the bug image facing
+ * different directions. Then simply change the setAnimation property of
+ * the bug sprite inside of each of the if statements to change it to the
+ * correct direction facing image. Remember to set the name of the 
+ * image the bug is set to originally outside of the draw loop when you
+ * create it if needed.
+ */
+
+var bug = createSprite(200, 200);
+bug.setAnimation("fly_left");
+
+function draw() {
+  //Draw Background
+  background("white");
+  
+  // Update Values
+  if(keyDown("up")){
+    bug.y = bug.y - 5;
+    bug.setAnimation("fly_up");
+  }
+  if(keyDown("down")){
+    bug.y = bug.y + 5;
+    bug.setAnimation("fly_down");
+  }
+  if(keyDown("left")){
+    bug.x = bug.x - 5;
+    bug.setAnimation("fly_left");
+  }
+  if(keyDown("right")){
+    bug.x = bug.x + 5;
+    bug.setAnimation("fly_right");
+  }
+
+  //Draw Animations
+  drawSprites();
+}
