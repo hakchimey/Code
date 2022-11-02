@@ -1,0 +1,50 @@
+//Student answers may vary, but students should use the same images in the
+//drawNight() function, and change the colors so that the image looks more 
+//like it's set in nighttime.
+
+function draw() {
+  if(Game.mouseY > 200){
+    drawDay();
+  } else {
+    drawNight();
+  }
+}
+
+function drawNight(){
+  noStroke();
+
+  //Sky
+  background(color(0, 0, 102));
+
+  //Water
+  fill(color(0,0,51));
+  rect(0,300,400,100);
+
+  //Moon
+  
+  fill(color(205, 205, 190));
+  ellipse(100,100,50,50);
+
+
+}
+function drawDay(){
+  noStroke();
+
+  //Sky
+  background(color(0,200,255));
+
+  //Water
+  fill(color(0,0,150));
+  rect(0,300,400,100);
+
+  //Sun
+  fill(color(255,255,0));
+  ellipse(100,100,50,50);
+
+  // Reflection
+  ellipse(randomNumber(50,150),randomNumber(300,400),5,5);
+  ellipse(randomNumber(50,150),randomNumber(300,400),5,5);
+  ellipse(randomNumber(50,150),randomNumber(300,400),5,5);
+  ellipse(randomNumber(50,150),randomNumber(300,400),5,5);
+  ellipse(randomNumber(50,150),randomNumber(300,400),5,5);    
+}
