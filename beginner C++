@@ -1,0 +1,25 @@
+#include <iostream> 
+
+using namespace std; 
+
+int main() 
+
+{ 
+
+string myname = "hak chimey"; 
+
+int myage = 14; 
+
+string myclass = "9NGS-C2"; 
+
+cout << "I am " << myname << "!" <<endl; 
+
+cout << "I am " << myage << " years old." <<endl; 
+
+cout << "I am a student of " << myclass << "!" <<endl; 
+
+cout << "We are very happy with studying C++!"; 
+
+return 0; 
+
+}
