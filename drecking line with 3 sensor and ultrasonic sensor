@@ -1,0 +1,138 @@
+int enA = 8;
+int in1 = 9;
+int in2 = 10;
+int in3 = 11;
+int in4 = 12;
+int enB = 13;
+
+int TRIG = 3;
+int ECHO = 2;
+int left, right, middle;
+
+int sensorleft = 4;
+int sensorright = 6;
+
+int count = 0;
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  // Motor
+  pinMode(enA, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+  pinMode(enB, OUTPUT);
+  // Ultrasonic
+  pinMode(TRIG, OUTPUT);
+  pinMode(ECHO, INPUT);
+  // Sensor
+  pinMode(sensorleft, INPUT);
+  pinMode(sensorright, INPUT);
+
+  // Initialize
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  line_detection();
+
+  if ((left == 1) && (middle == 0) && (right == 1)) {
+    moveforward();
+    delay(10);
+  }
+
+  if ((left == 0) && (middle == 1) && (right == 1)) {
+    moveleft();
+    // delay(30);
+    delay(3);
+  }
+  if ((left == 1) && (middle == 1) && (right == 0)) {
+    moveright();
+    // delay(90);
+    delay(3);
+  }
+  if ((left == 1) && (middle == 0) && (right == 0)) {
+    // stop();
+    // delay(100);
+    moveright();
+    delay(30);
+  }
+  if ((left == 0) && (middle == 0) && (right == 1)) {
+    // stop();
+    // delay(300);
+    moveleft();
+    delay(30);
+    // delay(100);
+  }
+  if ((left == 0) && (middle == 1) && (right == 0)) {
+    moveleft();
+    // delay(300);
+  }
+  //   if ((left == 0) && (middle == 0) && (right == 0)) {
+  //   moveforward();
+  //   // delay(300);
+  // }
+}
+
+
+
+void line_detection() {
+  left = (digitalRead(sensorleft) == HIGH) ? 0 : 1;
+  right = (digitalRead(sensorright) == HIGH) ? 0 : 1;
+  middle = (digitalRead(7) == HIGH) ? 0 : 1;
+}
+
+void moveright() {
+  // delay(30);
+  analogWrite(enA, 130);
+  analogWrite(enB, 151);//148
+  digitalWrite(in3, HIGH);  // forwa rd
+  digitalWrite(in1, HIGH);
+  digitalWrite(in4, LOW);
+  digitalWrite(in2, LOW);
+  // delay(80);
+}
+          
+void moveleft() {
+  // delay(30);
+  analogWrite(enA,113); //115
+  analogWrite(enB, 181);
+  digitalWrite(in2, HIGH);  // forward
+  digitalWrite(in4, HIGH);
+  digitalWrite(in1, LOW);
+  digitalWrite(in3, LOW);
+  // delay(80);
+}
+
+void moveleftB() {
+  // delay(30);
+  analogWrite(enA,180); //115
+  analogWrite(enB, 180);
+  digitalWrite(in2, HIGH);  // forward
+  digitalWrite(in4, HIGH);
+  digitalWrite(in1, LOW);
+  digitalWrite(in3, LOW);
+  // delay(80);
+}
+
+
+void moveforward() {
+  analogWrite(enA, 153);
+  analogWrite(enB, 188);
+  digitalWrite(in2, HIGH);  // forward
+  digitalWrite(in3,HIGH);
+  digitalWrite(in1, LOW);
+  digitalWrite(in4, LOW);
+}
+
+void stop() {
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+}
